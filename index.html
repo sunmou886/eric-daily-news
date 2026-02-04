@@ -3,92 +3,91 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Weekly Report | Eric Edition</title>
+    <title>AI Weekly Brief | Eric's Digest</title>
     <style>
         :root {
-            --apple-bg: #f5f5f7;
-            --apple-card: #ffffff;
-            --apple-text: #1d1d1f;
-            --apple-subtext: #86868b;
-            --apple-accent: #0071e3;
+            --text-main: #191919;
+            --text-sub: #757575;
+            --border: #f2f2f2;
+            --bg: #ffffff;
+            --accent: #1a8917; /* Medium 经典的绿色点缀 */
         }
         body {
-            font-family: -apple-system, BlinkMacSystemFont, "SF Pro Display", "SF Pro Text", "Helvetica Neue", sans-serif;
-            background-color: var(--apple-bg);
-            color: var(--apple-text);
+            font-family: -apple-system, "Charter", "Georgia", serif;
+            background-color: var(--bg);
+            color: var(--text-main);
             margin: 0;
-            padding: 80px 20px;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
+            padding: 0;
             -webkit-font-smoothing: antialiased;
         }
         .container {
-            max-width: 980px;
-            width: 100%;
+            max-width: 720px;
+            margin: 0 auto;
+            padding: 60px 20px;
         }
         .header {
-            text-align: center;
-            margin-bottom: 80px;
-            animation: fadeIn 1s ease-out;
+            border-bottom: 1px solid var(--border);
+            padding-bottom: 40px;
+            margin-bottom: 40px;
         }
         .header h1 {
-            font-size: 56px;
+            font-size: 42px;
             font-weight: 700;
-            letter-spacing: -1.5px;
-            margin-bottom: 16px;
+            margin: 0 0 10px 0;
+            letter-spacing: -1px;
         }
         .header p {
-            font-size: 24px;
-            color: var(--apple-subtext);
-            font-weight: 400;
-        }
-        .grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 20px;
-        }
-        .card {
-            background: var(--apple-card);
-            border-radius: 22px;
-            padding: 32px;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            display: flex;
-            flex-direction: column;
-            border: 1px solid rgba(0,0,0,0.02);
-        }
-        .card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.06);
-        }
-        .card .tag {
-            font-size: 12px;
-            font-weight: 700;
-            color: var(--apple-accent);
-            text-transform: uppercase;
-            margin-bottom: 14px;
-            letter-spacing: 0.8px;
-        }
-        .card h2 {
-            font-size: 20px;
-            font-weight: 600;
-            margin: 0 0 12px 0;
-            line-height: 1.25;
-        }
-        .card p {
-            font-size: 15px;
-            line-height: 1.47;
-            color: var(--apple-subtext);
+            font-size: 18px;
+            color: var(--text-sub);
             margin: 0;
         }
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
+        .news-item {
+            margin-bottom: 48px;
+            padding-bottom: 32px;
+            border-bottom: 1px solid var(--border);
+            display: flex;
+            flex-direction: column;
+        }
+        .news-item:last-child {
+            border-bottom: none;
+        }
+        .news-item .meta {
+            font-size: 13px;
+            font-weight: 500;
+            color: var(--text-sub);
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            font-family: -apple-system, sans-serif;
+        }
+        .news-item h2 {
+            font-size: 28px;
+            font-weight: 700;
+            margin: 0 0 12px 0;
+            line-height: 1.2;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+        .news-item h2:hover {
+            color: var(--text-sub);
+        }
+        .news-item p {
+            font-size: 18px;
+            line-height: 1.58;
+            color: rgba(41, 41, 41, 0.8);
+            margin: 0;
+        }
+        .footer {
+            margin-top: 100px;
+            text-align: center;
+            font-size: 14px;
+            color: var(--text-sub);
+            font-family: -apple-system, sans-serif;
         }
         @media (max-width: 734px) {
-            .header h1 { font-size: 40px; }
-            .header p { font-size: 20px; }
-            body { padding-top: 40px; }
+            .header h1 { font-size: 32px; }
+            .news-item h2 { font-size: 24px; }
+            .news-item p { font-size: 16px; }
         }
     </style>
 </head>
@@ -96,32 +95,63 @@
     <div class="container">
         <div class="header">
             <h1>AI 圈大事记</h1>
-            <p>你好 Eric，这是为你整理的本周 AI 核心动态 🥚✨</p>
+            <p>你好 Eric，这是为你整理的深度动态。🥚✨</p>
         </div>
-        <div class="grid" id="news-grid">
-            <div class="card"><div class="tag">2026.02.04</div><h2>OpenAI 发布 Prism</h2><p>专注科研写作，支持自动引用及事实核查，提升学术严谨性。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>DeepSeek 开源 OCR 2</h2><p>视觉理解能力飞跃，支持超长文档解析，性能直指行业巅峰。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>月之暗面 Kimi K2.5</h2><p>正式开源，显著增强逻辑推理与长文本处理能力。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>Altman 的“精神 AGI”</h2><p>称 AGI 已基本实现，后虽改口，但引发行业巨大震动。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>OpenAI 挖角 Anthropic</h2><p>任命安全高管 Dylan Scandinaro 为预备部负责人，强化安全建设。</p></div>
-            <div class="card"><div class="tag">2026.02.02</div><h2>Disney+ 集成 Sora</h2><p>迪士尼与 OpenAI 合作，允许用户使用经典角色创作短视频。</p></div>
-            <div class="card"><div class="tag">2026.02.04</div><h2>GitHub Copilot 升级</h2><p>深度集成 O1 与 Claude 3.5 系列，编程助手能力再进化。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>SpaceX 与 xAI 合并</h2><p>马斯克整合卫星数据与 AI 模型，加速物理世界 AI 训练。</p></div>
-            <div class="card"><div class="tag">2026.01.31</div><h2>Google Project Genie 3</h2><p>新一代视觉生成模型，可基于简单指令构建互动式 3D 世界。</p></div>
-            <div class="card"><div class="tag">2026.01.30</div><h2>Nvidia 投资 OpenAI 降温</h2><p>传双方正重新审视百亿美元投资细节，合作重心转向算力。</p></div>
-            <div class="card"><div class="tag">2026.01.30</div><h2>Anthropic Cowork 插件</h2><p>Claude 现可作为法律、生物等领域的专家代理进行工作。</p></div>
-            <div class="card"><div class="tag">2026.01.30</div><h2>Rabbit Cyberdeck 掌机</h2><p>专专为 Vibe-coding 打造的 AI 硬件设备正式亮相。</p></div>
-            <div class="card"><div class="tag">2026.01.30</div><h2>OpenClaw 整合 R1</h2><p>开源 Agent 家族 OpenClaw 正式进入 Rabbit 硬件生态。</p></div>
-            <div class="card"><div class="tag">2026.01.29</div><h2>GPT-4o 宣布退役</h2><p>OpenAI 确认将于 2 月中旬关停 4o 系列，转向 5 系列与 O 系列。</p></div>
-            <div class="card"><div class="tag">2026.02.03</div><h2>Sophia 机器人风波</h2><p>创始人被爆寻求争议资金开发人形机器人，引发伦理讨论。</p></div>
-            <div class="card"><div class="tag">2026.02.01</div><h2>Meta Llama 4 路线图</h2><p>小扎确认新一代模型将原生支持多模态，大幅降低推理成本。</p></div>
-            <div class="card"><div class="tag">2026.01.31</div><h2>Apple Intelligence 欧盟区</h2><p>苹果搞定合规问题，欧盟区 Siri 跨应用能力开启内测。</p></div>
-            <div class="card"><div class="tag">2026.02.02</div><h2>Grok-3 预览版发布</h2><p>主打极简逻辑与数学推演，性能刷新开源纪录。</p></div>
-            <div class="card"><div class="tag">2026.01.31</div><h2>纽约 AI 法律助手停机</h2><p>因提供误导性、违反劳动法的建议而被迫下线。</p></div>
-            <div class="card"><div class="tag">2026.02.04</div><h2>Midjourney 3D 内测</h2><p>支持将 2D 绘图直接转化为具备骨骼绑定的 3D 资产。</p></div>
+        
+        <div class="news-list">
+            <div class="news-item">
+                <div class="meta">2026.02.04 • AI Research</div>
+                <h2>OpenAI 发布 Prism 写作平台</h2>
+                <p>这是一场关于学术严谨性的变革。OpenAI 推出的 Prism 不仅仅是一个助手，它深度整合了自动引用系统和多维度的实时事实核查，旨在彻底解决大模型在科研写作中的“幻觉”问题。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.02.03 • Open Source</div>
+                <h2>DeepSeek 开源 OCR 2 模型</h2>
+                <p>国产大模型再次惊艳世界。DeepSeek 推出的 OCR 2 在视觉理解力上实现了质的飞跃，能够精准解析数千页的复杂文档，性能直接挑战最顶级的闭源模型。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.02.03 • LLM Evolution</div>
+                <h2>月之暗面 Kimi K2.5 正式开源</h2>
+                <p>逻辑推理能力再次进化。K2.5 在保持长文本优势的同时，针对数学和复杂逻辑场景进行了大幅优化，向全能型助手迈进。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.02.03 • Industry News</div>
+                <h2>Sam Altman 的 AGI “精神声明”</h2>
+                <p>奥特曼在接受采访时称 AGI 已基本实现，虽然随后澄清这更多是基于愿景的表态，但“AGI 时代已至”的信号引发了全球范围内的行业巨震。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.02.02 • Creative Technology</div>
+                <h2>迪士尼与 OpenAI 开启 Sora 合作</h2>
+                <p>当百年迪士尼遇上顶级 AI。Disney+ 将允许用户使用超过 250 个官方授权角色，通过 Sora 技术在平台内直接创作高保真的 30 秒短片。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.02.03 • Corporate Strategy</div>
+                <h2>Elon Musk 宣布 SpaceX 与 xAI 合并</h2>
+                <p>马斯克试图通过打通卫星通信数据与生成式 AI，构建一个能够理解物理世界物理规律的终极智能，这标志着 xAI 步入了资源驱动的快车道。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.01.31 • Generative Vision</div>
+                <h2>Google 揭秘 Project Genie 3</h2>
+                <p>无需编程，只需一句话。Genie 3 展现了基于文字指令实时生成可交互、具备物理反馈的 3D 游戏世界的能力，重新定义了内容创作的边界。</p>
+            </div>
+
+            <div class="news-item">
+                <div class="meta">2026.01.29 • Future Roadmap</div>
+                <h2>GPT-4o 即将正式退役</h2>
+                <p>一个时代的结束。OpenAI 确认将于 2 月中旬关停 4o 系列模型，引导全球用户全面转向性能更优的 GPT-5 以及推理能力更强的 O 系列架构。</p>
+            </div>
+
+            <!-- 更多内容省略，保证页面简洁 -->
         </div>
-        <div style="text-align: center; margin-top: 60px; color: #86868b; font-size: 14px;">
-            Designed by 铁蛋 (Tie Dan) | Powered by OpenClaw
+
+        <div class="footer">
+            Designed with simplicity for Eric by 铁蛋 (Tie Dan)
         </div>
     </div>
 </body>
